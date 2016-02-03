@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdlib>
 
-#include "dungeon_crawl.h"
+#include "dungeon-crawl.h"
 
 	/////////////////////////
    //                     //
@@ -14,6 +14,9 @@
 Item::Item(std::string name_of_item, float item_weight) {
 	name = name_of_item;
 	weight = item_weight;
+}
+
+Item::~Item() {
 }
 
 Attributes Item::getModificators() {
@@ -41,6 +44,10 @@ Creature::Creature(std::string name_of_creature) {
 	name = name_of_creature;
 }
 
+Creature::~Creature() {
+
+}
+
 std::string Creature::getName() {
 	return name;
 }
@@ -64,6 +71,15 @@ bool Creature::addItem(Item* item) {
 		return true;
 	}
 
+}
+
+
+void Creature::setAttributes(Attributes attrib_mods) {
+	attribs = attrib_mods;
+}
+
+void Creature::setModificators(Attributes attrib_mods) {
+	attribs = attrib_mods;
 }
 
 void Creature::setMaxWeight(float max_w) {
@@ -157,7 +173,7 @@ Game::Game(int dungeon_height, int dungeon_width, int number_of_monsters) {
 	dungeon = new Dungeon(dungeon_width, dungeon_height);
 
 	// initialize default weapon
-	Weapon *kurzschwert = new Weapon("Kurzschwert", 2.0);
+	Weapon* kurzschwert = new Weapon("Kurzschwert", 2.0);
 	Attributes kurzschwert_mods;
 	kurzschwert_mods.strength = 3;
 	kurzschwert_mods.agility = -1;
