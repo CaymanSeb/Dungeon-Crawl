@@ -33,7 +33,7 @@ protected:
 class TreasureChest : public Item {
 public:
 	TreasureChest();
-	~TreasureChest();
+	~TreasureChest() {};
 	std::vector<Item> getContents();
 	void addItem(Item* item);
 	void removeItem(Item* item);
@@ -89,7 +89,7 @@ public:
 	Monster(std::string name_of_creature) : Creature(name_of_creature) {
 
 	}
-	~Monster(){}
+	//~Monster(){}
 
 
 };
